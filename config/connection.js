@@ -20,3 +20,4 @@ connection.connect(function(err) {
 
 ///export connection for the ORM to use.
 module.exports = connection
+

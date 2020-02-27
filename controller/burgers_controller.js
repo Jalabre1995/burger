@@ -6,20 +6,38 @@ var router = express. Router();
 var burger = require("../models/burger.js");
 
 ////Setting up the routes////
-router.get('/', function(req, res) {
-    burger.all(function(data) {
+
+router.get("/", function(req,res) {
+    res.redirect("burgers")
+});
+
+
+router.get('/burgers', function(req, res) {
+    burgers.selectAll(function(data) {
         var hbsObject = {
             burgers: data
-        };
+        }; 
         console.log(hbsObject);
         res.render("index", hbsObject);
 });
 });
 
+////Posting the data////
+router.post('/burgers/create', function(req, res) {
+    burgers.insertOne([
+        "burger_name"
+    ], [
+        req.body.burger_name
+    ], function(data) {
+        res.redirect('/burgers');
+    });
+});
 
-/////Posting the data/////
 
-router.post('/api/burgers', function (req, res) {
+
+/////Updating the data./////
+
+router.put('/burgers/update/:id', function (req, res) {
     burger.upDateOne([
         "burger_name", "devoured"
     ], [
