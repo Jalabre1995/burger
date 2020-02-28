@@ -13,7 +13,7 @@ router.get("/", function(req,res) {
 
 
 router.get('/burgers', function(req, res) {
-    burgers.selectAll(function(data) {
+    burger.selectAll(function(data) {
         var hbsObject = {
             burgers: data
         }; 
@@ -24,7 +24,7 @@ router.get('/burgers', function(req, res) {
 
 ////Posting the data////
 router.post('/burgers/create', function(req, res) {
-    burgers.insertOne([
+    burger.insertOne([
         "burger_name"
     ], [
         req.body.burger_name
@@ -57,4 +57,4 @@ router.put('/burgers/update/:id', function (req, res) {
 
 //Export routes for burgers.js to use///
 
-modeule.exports = router;
+module.exports = router;
