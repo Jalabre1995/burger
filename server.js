@@ -1,12 +1,12 @@
 var express = require("express");
 
-var PORT = process.env.PORT || 3306;
+var PORT = process.env.PORT || 8080;
 
 var app = express();
 
 ///Serve static content for the app form the "public" directory in the app////
 
-app.use(express.static("public"));
+app.use(express.static("Public"));
 
 //Parse the application of the body///
 
