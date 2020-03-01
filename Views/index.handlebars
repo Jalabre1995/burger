@@ -1,41 +1,31 @@
-<h1> Burgers</h1>
-
-<h2>Burgers that are devoured</h2>
-
-<ul>
-    {{#each burger}}
-    {{#unless devoured}}
-    {{> burger/burger-block devoured=true}}
-    {{/unless}}
-    {{/each}}
-</ul>
-
-<h2>Burgers that are not devoured</h2>
-
-<ul>
-    {{#each burger}}
-    {{#if devoured}}
-    {{> burger/burger-block devoured=false}}
-    {{/if}}
-    {{/each}}
-</ul>
-
-<h2> Add burger</h2>
-<form class="create-form">
-    <div class="form-group">
-        <label for="bu">Burger Name:</label>
-        <input type="text" id = "bu" name="name">
+<div class="row">
+    <i class="fas fa-hamburger"></i>
+    <div class="col-md-6">
+        <div class="card">
+            <h4 class="card-header text-center">Ready to Eat!</h4>
+            <div class="card-body">
+                {{#each burgers}}
+                {{#unless this.devoured}}
+                <div class="input-group my-4">
+                    <li class="form-control">{{id}}.{{burger_name}}</li><button class="btn btn-success devour-button ml-3" data-id="{{id}}" type="submit">Devour IT!!</button>
+                </div>
+                {{/unless}}
+                {{/each}}
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="dev">Devoured</label><br>
-        <input type="radio" name= "devour" value="1" checked> Devoured<br>
-    </div> 
-    <button type="submit">Add burger</button>
-    <h3> Delete burger</h3>
-    <form class="create-form">
-    <div class="form-group">
-        <label for= "dev">Devoured</label><br>
-        <input type="radio" name="devour" value="= 1"checked> Devoured<br>
+    <div class="col-md-6">
+        <div class="card">
+            <h4 class="card-header text-center"> Already Eaten</h4>
+            <div class="card-body">
+                {{#each burgers}}
+                {{#if this.devoured}}
+                <div class="input-group my-4">
+                    <li class="form-control"> {{this.id}}.{{this.burger_name}}</li><button class="btn btn-success restore-button ml-3" data-id="{{id}}" type="submit">Restore</button>
+                </div>
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
     </div>
-    <button type="submit"> Delete</button>
-</form> 
+</div>

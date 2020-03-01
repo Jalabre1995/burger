@@ -35,7 +35,7 @@ router.post('/burgers/create', function(req, res) {
 
 
 
-/////Updating the data./////
+/////Updating the data.///// 
 
 router.put('/burgers/update/:id', function (req, res) {
     burger.upDateOne([
@@ -46,6 +46,20 @@ router.put('/burgers/update/:id', function (req, res) {
         res.json({id: result.insertID});
     });
 });
+////Deleteing the burger////
+router.delete("/api/burgers/:id", function(req, res){
+    var condition = "id =" + req.params.id;
+    burger.delete(condition, function(result){
+        if(result.affectedRows == 0){
+            return res.status(404).end();
+        }else{
+            res.status(200).end();
+        }
+    })
+})
+
+
+
 
 
 

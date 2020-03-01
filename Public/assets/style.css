@@ -1,0 +1,33 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 45px;
+}
+
+.card-header {
+    background-color: #00970C;
+    color: #fff;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 45px;
+    text-align: center;
+    width: 100%;
+    background-color: #343A40;
+    border-top: 5px solid #00970C;
+}
+
+footer small {
+    line-height: 40px;
+    color: #D2B773;
+    font-size: 12px;
+}
+
+#img{
+    float: right;
+}
